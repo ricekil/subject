@@ -38,6 +38,7 @@ public class UserRealm extends AuthorizingRealm {
         if(!loginName.equals("admin") || !password.equals("123")){
             throw new UnknownAccountException("用户不存在");
         }
+        //todo
         user.setLoginName("admin");
         user.setPassword("123");
         user.setUserId(1);
