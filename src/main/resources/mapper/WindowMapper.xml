@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zcl.subject.dao.TestDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, windowName, serviceKey, deptId, ip, state
+    </sql>
+
+    <!-- 通用查询条件 -->
+    <sql id="Where_Common">
+        <if test="null != id">
+            AND id = #{id}
+        </if>
+        <if test="null != windowName">
+            AND windowName = #{windowName}
+        </if>
+        <if test="null != serviceKey">
+            AND serviceKey = #{serviceKey}
+        </if>
+        <if test="null != deptId">
+            AND deptId = #{deptId}
+        </if>
+        <if test="null != ip">
+            AND ip = #{ip}
+        </if>
+        AND state <![CDATA[ <> ]]> 0
+    </sql>
+
+    <select id="getWindowById" resultType="com.zcl.subject.bean.WindowBean"
+      parameterType="Integer">
+        select
+        a.id, a.windowName, a.serviceKey, a.deptId, a.ip, a.state, a.isUse,
+        case when  a.serviceKey = c.serviceKey then c.serviceName else '' END AS serviceName,
+        case when  a.deptId = d.id then d.dept_name else '' END AS deptName
+        from t_sys_window a
+        LEFT JOIN
+        t_service_center c
+        ON
+        a.serviceKey = c.serviceKey
+        LEFT JOIN
+        t_sys_dept d
+        ON
+        a.deptId = d.id
+        where a.id = #{id}
+        AND a.state  <![CDATA[ <> ]]> 0
+    </select>
+
+
+</mapper>
