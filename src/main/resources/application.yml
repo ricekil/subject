@@ -22,3 +22,21 @@ mybatis:
 
 logging:
   config: classpath:logback-spring.xml
+
+info:
+  app:
+    name: spring-boot-actuator
+    version: 1.0.0
+    test: test
+
+management:
+  security: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
