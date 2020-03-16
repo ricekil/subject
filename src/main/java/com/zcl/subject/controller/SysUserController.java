@@ -22,6 +22,7 @@ public class SysUserController {
             subject.login(token);
             System.out.println("1111");
         } catch (UnknownAccountException | LockedAccountException e) {
+            System.out.println("2222");
             return;
         }
         System.out.println("登录成功");
