@@ -16,6 +16,7 @@ public class SysUserController {
     @RequestMapping("/login")
     public void login(String loginName,String password){
         try {
+            System.out.println("test1");
             Subject subject = ShiroUtils.getSubject();
             //sha256加密
             UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
