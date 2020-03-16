@@ -16,17 +16,11 @@ public class SysUserController {
     @RequestMapping("/login")
     public void login(String loginName,String password){
         try {
-            System.out.println("test1");
             Subject subject = ShiroUtils.getSubject();
             //sha256加密
             UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
             subject.login(token);
-            System.out.println("1 = " + 1);
-            System.out.println("1 = " + 3);
-            System.out.printf("iiiiiiii");
         } catch (UnknownAccountException | LockedAccountException e) {
-            System.out.println("账户不存在");
-            System.out.println("111111 = " + 111111);
             return;
         }
         System.out.println("登录成功");
