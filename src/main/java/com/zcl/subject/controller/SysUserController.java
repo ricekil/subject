@@ -22,6 +22,7 @@ public class SysUserController {
             subject.login(token);
             System.out.println("1 = " + 1);
             System.out.println("1 = " + 2);
+            System.out.printf("iiiiiiii");
         } catch (UnknownAccountException | LockedAccountException e) {
             System.out.println("账户不存在");
             return;
