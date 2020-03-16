@@ -20,6 +20,7 @@ public class SysUserController {
             //sha256加密
             UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
             subject.login(token);
+            System.out.println("1111");
         } catch (UnknownAccountException | LockedAccountException e) {
             return;
         }
